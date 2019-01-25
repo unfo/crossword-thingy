@@ -53,9 +53,8 @@ function needfulDoer() {
 
     clickAllTheThings('thead td', setActiveStyle);
     clickAllTheThings('tbody td', applyActiveStyle);
-    
+    pick('#mass-edit').classList.remove('hidden');    
     // xword.appendChild(table);
-    console.log('body should now contain a table');
     // console.log(table);
 }
 

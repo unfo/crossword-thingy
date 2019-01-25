@@ -2,6 +2,14 @@ body {
     counter-reset: letternum;
 }
 
+.hidden { display: none; }
+
+#mass-edit { 
+    float: right;
+}
+
+td.selected { background: orange !important; }
+
 table,
 tr,
 td {
