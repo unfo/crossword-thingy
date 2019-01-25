@@ -53,6 +53,7 @@ function needfulDoer() {
 
     clickAllTheThings('thead td', setActiveStyle);
     clickAllTheThings('tbody td', applyActiveStyle);
+    
     // xword.appendChild(table);
     console.log('body should now contain a table');
     // console.log(table);
@@ -67,7 +68,7 @@ function applyActiveStyle(event) {
     if (window.ACTIVE_CELL) {
         console.log('applying active style');
         let cell = event.target;
-        cell.classList = [];
+        cell.classList = ['temporary-letter'];
         ACTIVE_CELL.classList.forEach(cl => {
             if (cl.startsWith("nth-letter-")) {
                 cell.classList.add(cl);
@@ -81,6 +82,13 @@ function applyActiveStyle(event) {
     } else {
         alert('Set active style by clicking on letter cells');
     }
+}
+
+function discoverLetter(number, letter) {
+    pickAll('.nth-letter-' + number).forEach(cell => {
+        cell.innerText = letter;
+        cell.classList.remove('temporary-letter');
+    });
 }
 
 /* Setup events finally */

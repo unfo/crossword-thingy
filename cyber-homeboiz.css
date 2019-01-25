@@ -1,6 +1,7 @@
 body {
     counter-reset: letternum;
 }
+
 table,
 tr,
 td {
@@ -8,14 +9,22 @@ td {
     padding: 0px;
 }
 
-td { width: 2em; height: 2em; position: relative; }
+td {
+    width: 2em;
+    height: 2em;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
 
 thead {
     background: #eee;
 }
+
 thead tr:last-of-type {
     border-bottom: 5px solid black;
 }
+
 td.blank-cell {
     background: black;
 }
@@ -29,3 +38,9 @@ td.letter-cell:after {
     font-size: xx-small;
 }
 
+td.temporary-letter {
+
+    font-size: xx-small;
+    vertical-align: top;
+    text-align: left;
+}
