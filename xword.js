@@ -6,7 +6,7 @@ function needfulDoer() {
     let letters = parseInt(pick('#letters').value);
     let letter_rows = Math.ceil(letters / cols);
 
-    let xword = pick('#xword-holder');
+    // let xword = 
     let table = make('table');
     let thead = make('thead');
     let tbody = make('tbody');
@@ -47,9 +47,10 @@ function needfulDoer() {
     footer_row.appendChild(footer_cell);
     tfoot.appendChild(footer_row);
     table.appendChild(tfoot);
-
-    xword.appendChild(table);
-
+    document.querySelector('body').appendChild(table);
+    // xword.appendChild(table);
+    console.log('body should now contain a table');
+    // console.log(table);
 }
 
 

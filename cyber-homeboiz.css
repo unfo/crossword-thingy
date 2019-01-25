@@ -1,0 +1,31 @@
+body {
+    counter-reset: letternum;
+}
+table,
+tr,
+td {
+    border: 1px solid black;
+    padding: 0px;
+}
+
+td { width: 2em; height: 2em; position: relative; }
+
+thead {
+    background: #eee;
+}
+thead tr:last-of-type {
+    border-bottom: 5px solid black;
+}
+td.blank-cell {
+    background: black;
+}
+
+td.letter-cell:after {
+    counter-increment: letternum;
+    content: counter(letternum);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: xx-small;
+}
+
