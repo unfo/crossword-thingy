@@ -47,26 +47,40 @@ function needfulDoer() {
     footer_row.appendChild(footer_cell);
     tfoot.appendChild(footer_row);
     table.appendChild(tfoot);
-    document.querySelector('body').appendChild(table);
+
+
+    pick('body').appendChild(table);
+
+    clickAllTheThings('thead td', setActiveStyle);
+    clickAllTheThings('tbody td', applyActiveStyle);
     // xword.appendChild(table);
     console.log('body should now contain a table');
     // console.log(table);
 }
 
-
-
-
-/* UTILS */
-function pick(query) {
-    return document.querySelector(query);
+function setActiveStyle(event) {
+    console.log('setting active style');
+    window.ACTIVE_CELL = event.target;
 }
 
-function clicky(query, fn) {
-    pick(query).addEventListener('click', fn);
-}
+function applyActiveStyle(event) {
+    if (window.ACTIVE_CELL) {
+        console.log('applying active style');
+        let cell = event.target;
+        cell.classList = [];
+        ACTIVE_CELL.classList.forEach(cl => {
+            if (cl.startsWith("nth-letter-")) {
+                cell.classList.add(cl);
+                let n = cl.split('-')[2];
+                cell.innerText = n;
+            } else if (cl.startsWith('blank-cell')) {
+                cell.classList.add(cl);
+            }
+        });
 
-function make(element) {
-    return document.createElement(element);
+    } else {
+        alert('Set active style by clicking on letter cells');
+    }
 }
 
 /* Setup events finally */
