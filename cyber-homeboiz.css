@@ -8,6 +8,14 @@ body {
     float: right;
 }
 
+textarea { clear: both; width: 300px; height: 300px;}
+div#input-letters { 
+    float: right;
+    margin-top: 100px;
+}
+input#discover-input { 
+    font-size: x-large;
+}
 td.selected { background: orange !important; }
 
 table,
@@ -18,20 +26,14 @@ td {
 }
 
 td {
-    width: 2em;
-    height: 2em;
+    width: 32px;
+    height: 32px;
     position: relative;
     vertical-align: middle;
     text-align: center;
 }
 
-thead {
-    background: #eee;
-}
-
-thead tr:last-of-type {
-    border-bottom: 5px solid black;
-}
+td.initial-cell { background: #eee; }
 
 td.blank-cell {
     background: black;

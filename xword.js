@@ -6,7 +6,6 @@ function needfulDoer() {
     let letters = parseInt(pick('#letters').value);
     let letter_rows = Math.ceil(letters / cols);
 
-    // let xword = 
     let table = make('table');
     let thead = make('thead');
     let tbody = make('tbody');
@@ -90,5 +89,57 @@ function discoverLetter(number, letter) {
     });
 }
 
+function convertTextToTable() {
+    let table = make('table');
+    let tbody = make('tbody');
+
+    let txt = pick('#prefilled-table').value;
+    let rows = txt.split('\n');
+    rows.forEach(row => {
+        let tr = make('tr');
+        let cols = row.split(' ');
+        cols.forEach(col => {
+            let td = make('td');
+            if (col == "x") {
+                td.classList.add('blank-cell')
+            } else {
+                let n = parseInt(col);
+                td.classList.add('nth-letter-' + n);
+                td.classList.add('temporary-letter');
+                if (col.indexOf('_') > -1) {
+                    td.classList.add('initial-cell')
+                }
+                td.innerText = n;
+            }
+            tr.appendChild(td);
+
+        });
+        tbody.appendChild(tr);
+
+    });
+    table.appendChild(tbody);
+
+    pick('body').appendChild(table);
+    pick('#prefilled-table').classList.add('hidden');
+    pick('#parserbutton').classList.add('hidden');
+    pick('#input-letters').classList.remove('hidden');
+    // clickAllTheThings('table td', setLetter);
+    pick('#discover-input').addEventListener('keydown', submitOnEnter)
+}
+
+function submitOnEnter(event) {
+    if (event.key == "Enter") {
+        [num, letter] = event.target.value.split("=");
+        discoverLetter(num, letter);
+        event.target.value = "";
+    } else {
+        // console.log(event);
+    }
+}
+function setLetter(event) {
+    console.log(event.target);
+}
+
 /* Setup events finally */
-clicky('#doerbutton', needfulDoer);
+// clicky('#doerbutton', needfulDoer);
+clicky('#parserbutton', convertTextToTable)
